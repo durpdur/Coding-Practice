@@ -38,7 +38,12 @@ public class Tideman {
     public static int numOfCanPrompt(Scanner myScanner) {
         System.out.println("How many canidates are there?");
         int numOfCan = myScanner.nextInt();
+
         myScanner.nextLine();
+
+        if (numOfCan > 8 || numOfCan < 1) {
+            numOfCanPrompt(myScanner);
+        }
 
         return numOfCan;
     }
@@ -87,14 +92,27 @@ public class Tideman {
         for (int i = 0; i < ballotNum; i++) {
             String winnerOfBallot = allBallots[i][0];
             for (int j = 0; j < numofCan; j++) {
-                for (int k = 0; k < numofCan; k++) {
-                    if (winnerOfBallot == edgeArray[j][k].getName1()) {
-                        edgeArray[j][k].edgeGained();
+                if(winnerOfBallot.equals(edgeArray[j][0].getName1())){
+                    for (int k = 0; k < numofCan; k++) {
+                        if (!winnerOfBallot.equals(edgeArray[j][k].getName2())) {
+                            edgeArray[j][k].edgeGained();
+                        }
                     }
                 }
             }
         }
 
+        // String[] imaginaryArray = String[5];
+        // for (i = 0; i < numofCan; i++) {
+        //     // edge increase for canidate[i] vs everyone after in the array
+        //     for 
+        //     // String[i][j++].increase;
+        //     for (j = 0; j < numofCan - i - 1; j++) {
+        //         //edge increase for canidate[i+1] vs everyone after in the array
+        //     }
+            
+
+        // }
         
     }
 
@@ -153,7 +171,7 @@ public class Tideman {
         clearDiagonalEdges(edgeArray, numofCan);
         for (int i = 0; i < numofCan; i++) {
             for (int j = 0; j < numofCan; j++) {
-                if (edgeArray[i][j] == null) {
+                if (edgeArray[i][j].equals(null)) {
                     System.out.print("NULL");
                 }
                 System.out.print(edgeArray[i][j].getName1() + "|" + edgeArray[i][j].getName2() + edgeArray[i][j].getEdge() + " ");
@@ -162,6 +180,6 @@ public class Tideman {
         }
         Candidate winner = findEdgeWinner(edgeArray, numofCan);
 
-        System.out.println("The winner is " + winner + "!");
+        System.out.println("The winner is " + winner.getName1() + "!");
     }
 }
