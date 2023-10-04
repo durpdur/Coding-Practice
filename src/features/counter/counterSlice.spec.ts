@@ -6,12 +6,12 @@ import counterReducer, {
 } from './counterSlice';
 
 describe('counter reducer', () => {
-    const initialState: CounterState = {
+    const initialState: CounterState ={
         value: 3,
         status: 'idle',
     };
 
-    it('should handle intial state', () => {
+    it('should handle initial state', () => {
         expect(counterReducer(undefined, { type: 'unkown' })).toEqual({
             value: 0,
             status: 'idle',
@@ -28,7 +28,7 @@ describe('counter reducer', () => {
         expect(actual.value).toEqual(2);
     });
 
-    it('shoudl handle incrementsByAmount', () => {
+    it('shoudl handle incrementByAmount', () => {
         const actual = counterReducer(initialState, incrementByAmount(2));
         expect(actual.value).toEqual(5);
     });
