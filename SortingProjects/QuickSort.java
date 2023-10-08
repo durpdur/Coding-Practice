@@ -1,8 +1,6 @@
-package SortingProjects;
-
 public class QuickSort {
     public static void main (String[] args) {
-        int[] arr = {12, 4, 5, 6, 7, 3, 1, 15};
+        int[] arr = {2, 3, 5, 4, 1, 6};
 
         quickSort(arr, 0 , (arr.length - 1));
 
@@ -18,6 +16,12 @@ public class QuickSort {
 
         if (low < high) {
             int partitionIndex = partition(arr, low, high);
+            System.out.println("PartitionIndex: " + partitionIndex);
+            for (int value: arr) {
+                System.out.print(value + " ");
+            }
+            System.out.println();
+            System.out.println("=========================");
 
             quickSort(arr, low, partitionIndex - 1);
             quickSort(arr, partitionIndex + 1, high);
@@ -30,6 +34,7 @@ public class QuickSort {
         // sets the limits for the sections of sorts going on
         int pivot = arr[high];
         int i = low - 1;
+        System.out.println("Pivot: " + pivot);
 
         for (int j = low; j < high; j++) {
             if (arr[j] <= pivot) {
