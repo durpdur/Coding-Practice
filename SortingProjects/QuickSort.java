@@ -14,14 +14,12 @@ public class QuickSort {
     // Recursively sorts through halves
     public static void quickSort(int[] arr, int low, int high) {
 
+        // for when the splitting of arrays reach one element, where low would then = high
         if (low < high) {
+
+            // calls partition for sorting and pivot setting
             int partitionIndex = partition(arr, low, high);
-            System.out.println("PartitionIndex: " + partitionIndex);
-            for (int value: arr) {
-                System.out.print(value + " ");
-            }
-            System.out.println();
-            System.out.println("=========================");
+
 
             quickSort(arr, low, partitionIndex - 1);
             quickSort(arr, partitionIndex + 1, high);
@@ -31,27 +29,30 @@ public class QuickSort {
 
     // Actual "sorting" logic
     public static int partition(int[] arr, int low, int high) {
-        // sets the limits for the sections of sorts going on
+        // Sets the pivot as the right most element
         int pivot = arr[high];
-        int i = low - 1;
-        System.out.println("Pivot: " + pivot);
 
+        // set i as first pointer for smaller elements to be inserted;
+        int i = low - 1;
+
+        // set i to first position of the array, increasing
+        // Swap smaller items (arr[j] to the left of the array)
         for (int j = low; j < high; j++) {
             if (arr[j] <= pivot) {
                 i++;
 
-                // Swap arr[i] and arr[j]
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
+                int temp = arr[j];
+                arr[j] = arr[i];
+                arr[i] = temp;
             }
         }
 
-        // Swap arr[i + 1] and arr[high] (pivot)
+        // swap pivot into the position right after the smaller items
         int temp = arr[i + 1];
         arr[i + 1] = arr[high];
         arr[high] = temp;
 
+        // return the pivot index so the following recursion know where to split the array in half
         return i + 1;
     }
 }

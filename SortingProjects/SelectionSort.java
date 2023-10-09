@@ -10,21 +10,20 @@ public class SelectionSort {
     }
 
     public static void selectionSort(int[] arr) {
-        int n = arr.length;
+        int n  = arr.length;
 
-        for ( int i = 0; i < n - 1; i++) {
-            int minKey = i;
-            // rest of the array is i + 1 to n
-            for (int j = i+1; j < n; j++) {
-                // just find the smallest value in the rest of the array
-                if (arr[minKey] > arr[j]) {
-                    minKey = j;
+        for (int i = 0; i < n - 1; i++) {
+            int minIndex = i;
+            
+            for (int j = i + 1; j < n; j++) {
+                if (arr[j] < arr[minIndex]) {
+                    minIndex = j;
                 }
             }
 
-            int numHolder = arr[i];
-            arr[i] = arr[minKey];
-            arr[minKey] = numHolder;
+            int temp = arr[minIndex];
+            arr[minIndex] = arr[i];
+            arr[i] = temp;
         }
     }
 }
