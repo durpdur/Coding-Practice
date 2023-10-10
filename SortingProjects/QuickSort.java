@@ -37,11 +37,11 @@ public class QuickSort {
 
         // set i to first position of the array, increasing
         // Swap smaller items (arr[j] to the left of the array)
-        for (int j = low; j < high; j++) {
-            if (arr[j] <= pivot) {
-                i++;
+        for ( int j = low; j < high; j++) {
+            if (arr[j] < pivot) {
+                i ++;
 
-                int temp = arr[j];
+                int temp  = arr[j];
                 arr[j] = arr[i];
                 arr[i] = temp;
             }
