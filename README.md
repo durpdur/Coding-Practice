@@ -1,2 +1,3 @@
 # Coding-Practice
-Coding Projects for practice
+Dump for small coding practice projects
+
